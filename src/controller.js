@@ -24,7 +24,7 @@ module.exports.CreateArea = async (req, res) => {
     try {
         const found = await AreaModel.findOne({ name: req.body.area.toLowerCase(),state: req.body.state.toLowerCase() })
         if (found) return res.status(200).json({ message: "area already created", status: false })
-        await AreaModel.create({ name: req.body.area.toLowerCase().trim,state: req.body.state.toLowerCase().trim,stateId:"888" })
+        await AreaModel.create({ name: req.body.area.toLowerCase().trim(),state: req.body.state.toLowerCase().trim(),stateId:"888" })
         res.status(200).json({ message: "success", status: true })
     } catch (ex) {
         console.log(ex.message)
@@ -33,7 +33,7 @@ module.exports.CreateArea = async (req, res) => {
 }
 module.exports.GetArea = async (req, res) => {
     try {
-        const area = await AreaModel.findOne(req.body)
+        const area = await AreaModel.findOne(req.params)
         res.status(200).json({ message: "success", status: true,area })
     } catch (ex) {
         console.log(ex.message)
