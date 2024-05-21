@@ -14,7 +14,7 @@ module.exports.CreateState = async (req, res) => {
 module.exports.GetStates = async (req, res) => {
     try {
         const states = await StateModel.find(req.params)
-        res.status(200).json({ message: "success", status: true,states })
+        res.status(200).json(states )
     } catch (ex) {
         console.log(ex.message)
         res.status(200).json({ message: "Error occur", status: false })
@@ -33,8 +33,8 @@ module.exports.CreateArea = async (req, res) => {
 }
 module.exports.GetArea = async (req, res) => {
     try {
-        const area = await AreaModel.findOne(req.params)
-        res.status(200).json({ message: "success", status: true,area })
+        const areas = await AreaModel.find(req.params)
+        res.status(200).json(areas)
     } catch (ex) {
         console.log(ex.message)
         res.status(200).json({ message: "Error occur", status: false })
